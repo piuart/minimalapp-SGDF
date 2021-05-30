@@ -1,0 +1,27 @@
+
+minimal app
+-------------------------------//------------------------------------
+
+
+1) Crear entorno virtual
+2) Activa el entorno virtual
+3) instalamos requirements =>  /requirements/requirements.txt
+4) Arrancamos nuestro sistema minimal app con el comando -> flask run ( Desktop\app-revo>flask run )
+
+
+
+------------------------------//--------------------------------------
+
+
+Usuarios en la aplicación
+
+*************************
+user : jadcode
+clave: 123456
+admin = todo los permisos
+
+*************************
+
+user : alex
+clave: 1234567
+admin = permisos limitados 

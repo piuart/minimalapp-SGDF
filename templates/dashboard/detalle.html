@@ -1,0 +1,42 @@
+{% extends 'dashboard/base.html' %}
+
+
+
+{% block content %}
+<div class="col s10 fixed">
+    <div class="row">
+        <div class="col s12 m6">
+        </br>
+            <div class="align-left">
+                <img src="{{ url_for('static', filename='dashboard/img/archivos.png')}}">
+            </div>
+            </br>
+        </div>
+
+        <div class="col s12 m4">
+            <h3 class="">Datos del Archivo</h3>
+            <p class="light">
+            <div><strong>ID :</strong> {{file_data.id}}</div>
+            <div><strong>NOMBRE :</strong> {{file_data.name}}</div>
+            <div><strong>PESO DEL ARCHIVO  :</strong> {{file_data.bites}}</div>
+            <div><strong>FECHA DE CREACIÓN :</strong> {{file_data.create}}</div>
+            </br>
+            <div><strong>SHA 256 :</strong> {{file_data.sha}}</div>
+            <br/>
+            <p><hr>
+            </br>
+                Una función hash es un algoritmo que transforma ("digiere") un conjunto arbitrario de elementos de 
+                datos, como puede ser un fichero de texto, en un único valor de longitud fija (el "hash"). 
+                El valor hash calculado puede ser utilizado para la verificación de la integridad de copias 
+                de un dato original sin la necesidad de proveer el dato original. 
+            </p>
+            </p>
+        </div>
+    </div>
+    <div>
+        <a href="{{url_for('dashboard')}}" class="buttons waves-light btn-small"> Regresar </a>
+    </div>
+</br></br>
+</div>
+</div>
+{% endblock %}

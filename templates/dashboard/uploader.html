@@ -1,0 +1,37 @@
+{% extends 'dashboard/base.html' %}
+
+
+
+{% block content %}
+<div class="col s10 fixed">
+    <div class="row">
+        <div class="col s12 m6">
+        </br>
+            <div class="left">
+                <img class="responsive-img" src="{{ url_for('static', filename='dashboard/img/archivos.png')}} ">
+            </div>
+            </br>
+        </div>
+
+        <div class="col s12 m4">
+            <h1>Subir Archivos</h1>
+            <br /><br />
+            {% if not current_user.is_admin %}
+                No tienes suficientes permisos
+            {% endif %}
+            {% if current_user.is_admin %}
+            <form method="POST" action="/uploader" enctype="multipart/form-data">
+                <input type="file" name="inputFile">
+                </br></br>
+                <input type=submit value="Subir Archivo">
+            </form>
+            {% endif %}
+        </div>
+        </br></br>
+    </div>
+    <div>
+        <a href="{{url_for('dashboard')}}" class="buttons waves-light btn-small"> Regresar </a>
+    </div>
+</div>
+</div>
+{% endblock %}

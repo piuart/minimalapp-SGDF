@@ -1,0 +1,40 @@
+{% extends 'dashboard/base.html' %}
+
+
+
+{% block content %}
+<div class="col s10 fixed">
+    <div class="row">
+        <div class="col s12 m6">
+        </br>
+            <div class="align-left">
+                <img src="{{ url_for('static', filename='dashboard/img/user.png')}}">
+            </div>
+            </br>
+        </div>
+
+        <div class="col s12 m4">
+            <h3 class="">Datos del Usuario</h3>
+            <p class="light">
+            <div><strong>ID :</strong> {{user_data.id}}</div>
+            <div><strong>NOMBRE :</strong> {{user_data.username}}</div>
+            <div><strong>FECHA DE CREACIÓN :</strong> {{user_data.create}}</div>
+            </br>
+            <div><strong>ES ADMIN? :</strong> {{user_data.is_admin}}</div>
+            <br/>
+            <p><hr>
+                Verifica los datos del usuario y el permiso dentro de la organización.
+                El usuario dependiendo de su roll puede solo ver y desacargar archivos de la plataforma, mientras
+                que el administrador es el encargado de agignar permiso, editar contenido, borrar y 
+                subir a la plataformanuevos ficheros 
+            </p>
+            </p>
+        </div>
+    </div>
+    <div>
+        <a href="{{url_for('listado_user')}}" class="buttons waves-light btn-small"> Regresar </a> 
+    </div>
+</br></br>
+</div>
+</div>
+{% endblock %}

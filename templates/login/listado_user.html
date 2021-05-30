@@ -1,0 +1,43 @@
+{% extends 'dashboard/base.html' %}
+
+
+
+{% block content %}
+<div class="col s10 fixed">
+    <!-- Teal page content  -->
+    <div id="title" class="row">
+        <div class="col s5"><h5 class="left-align ">Lista de Usuarios</h5></div>
+        <div class="col s7"><p class="right-align" >Numero de Archivos en data: {{total_users}}</p></div>
+    </div>
+    <table id="table" class="table striped responsive-table centered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>ES ADMIN?</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td> {{user.id}} </td>
+                <td><strong>{{user.username}}</strong></td>
+                <td><strong>{{user.is_admin}}</strong></td>
+                <td>
+                    <ts id="watch"><a href="ver_user/{{user.id}}"><i class="material-icons">visibility</i> </a></ts>
+                    {% if current_user.is_admin %}
+                    <ts class="delete"><a href="eliminar_user/{{user.id}}"><i class="material-icons">delete</i> </a></ts>
+                    <ts id="watch"><a href="editar/{{user.id}}"><i class="material-icons">border_color</i> </a></ts>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{url_for('create_user')}}" class="buttons waves-light btn-small"> Agregar </a>  <a href="{{url_for('listado_user')}}" class="buttons waves-light btn-small"> Refrescar </a>
+</div>
+</br></br></br></br>
+</div>
+{% endblock %}

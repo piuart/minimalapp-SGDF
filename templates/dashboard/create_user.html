@@ -1,0 +1,53 @@
+{% extends 'dashboard/base.html' %}
+
+
+
+{% block content %}
+<div class="col s10 fixed">
+    <div class="row">
+        <div class="col s12 m6">
+        </br>
+            <div class="align-left">
+                <img src="{{ url_for('static', filename='dashboard/img/user_add.png')}}">
+            </div>
+            </br>
+        </div>
+        
+        <div class="col s12 m4">
+            <p>
+                <h3>Agregar Persona</h3>
+                <br/>
+                {% if not current_user.is_admin %}
+                No tienes suficientes permisos
+                {% endif %}
+                {% if current_user.is_admin %}
+                <form  method="POST">
+                    {{forma.csrf_token}}
+                    <p>
+                        {{forma.username.label}} <br/>
+                        {{forma.username(size=30)}}
+                    </p>
+                    <p>
+                        {{forma.password.label}} <br/>
+                        {{forma.password(size=30)}}
+                    </p>
+                    {{ forma.hidden_tag() }}
+                    <p>Permisos: {{ forma.is_admin() }}</p>
+                    </br>
+                    </p>
+                    <p>
+                        {{forma.enviar()}}
+                    </p>
+                </form>
+                {% endif %}
+            <br/>
+            </p>
+        </div>
+    </div>
+    <div>
+        <a href="{{url_for('dashboard')}}" class="buttons waves-light btn-small"> Regresar </a>
+    </div>
+</br></br>
+</div>
+</div>
+{% endblock %}

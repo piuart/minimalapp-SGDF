@@ -1,0 +1,45 @@
+{% extends 'dashboard/base.html' %}
+
+
+
+{% block content %}
+<div class="col s10 fixed">
+    <!-- Teal page content  -->
+    <div id="title" class="row">
+        <div class="col s5"><h5 class="left-align ">Lista de Archivos</h5></div>
+        <div class="col s7"><p class="right-align" >Numero de Archivos en data: {{total_files}}</p></div>
+    </div>
+    <table id="table" class="table striped responsive-table centered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>FECHA</th>
+                <th>BITE</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for file in files %}
+            <tr>
+                <td> {{file.id}} </td>
+                <td><strong>{{file.name}}</strong></td>
+                <td>{{file.create}}</td>
+                <td><strong>{{file.bites}}</strong></td>
+                <td>
+                    <ts id="watch"><a href="ver/{{file.id}}"><i class="material-icons">visibility</i> </a></ts>
+                    <ts id="download"><a href="/upload/{{file.name}}"><i class="material-icons">cloud_download</i> </a></ts>
+                    {% if current_user.is_admin %}
+                    <ts class="delete"><a href="eliminar/{{file.id}}"><i class="material-icons">delete</i> </a></ts>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{url_for('uploader')}}" class="buttons waves-light btn-small"> Agregar </a>  <a href="{{url_for('dashboard')}}" class="buttons waves-light btn-small"> Refrescar </a>
+</div>
+</br></br></br></br>
+</div>
+{% endblock %}
